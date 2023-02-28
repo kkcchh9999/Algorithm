@@ -1,37 +1,29 @@
 import math
 
-t = int(input())
-for i in range(t) : 
-    n = int(input())
-    
-    arr = [True for i in range(n)]
-    arr[0] = False
-    arr[1] = False
-    
-    
-    for j in range(2, int(math.sqrt(n))+1) : 
-        if arr[j] == True : 
-            k = 2
-            
-            while j * k < n : 
-                arr[j * k] = False
-                k += 1;
-   
-    prime = []
-    for j in range(n) : 
-        if arr[j] == True :
-            prime.append(j) 
-    
-    ans = []
-    for j in range(len(prime)) :
-        for k in prime[j: ] :
-            if prime[j] + k == n : 
-                ans.append([prime[j], k, k-j])
-    tmp = 10000
-    answer = []
-    for j in ans : 
-        if tmp > j[2] : 
-            tmp = j[2] 
-            answer = j
+arr = [True for i in range(10001)] 
+arr[0] = False
+arr[1] = False
 
-    print("%d %d" %(answer[0], answer[1]))
+for i in range(2, int(math.sqrt(10000) + 1)) : 
+    if arr[i] == True : 
+        j = 2;
+
+        while i * j <= 10000 : 
+            arr[i * j] = False
+            j += 1
+
+    
+k = int(input())
+ 
+for re in range(k) :
+    n = int(input())
+    a = n//2
+    b = n//2
+
+    while a > 0 : 
+        if arr[a] and arr[b] : 
+            print(a, b) 
+            break 
+        else : 
+            a -= 1 
+            b += 1
